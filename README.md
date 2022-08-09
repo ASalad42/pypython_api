@@ -9,6 +9,7 @@
 - practice APIs
 
 ## What is an API and how to use it with requests (python package)
+When you use an application on your mobile phone, the application connects to the Internet and sends data to a server. The server then retrieves that data, interprets it, performs the necessary actions and sends it back to your phone. The application then interprets that data and presents you with the information you wanted in a readable way. This is what an API is - all of this happens via API.
 
 ### Benefits 
 - saves alot of time 
@@ -22,12 +23,40 @@ scrap data from any website - store it in a file.csv or dict - iterate through t
 - pip install package_name `pip install requests`
 - packaged downlaoded through package install in settings 
 
-
+## First Iteration 
 ````python
 import requests
 
-response = requests.get("https://www.bbc.co.uk/news")
+response = requests.get("https://www.bbc.co.uk/iplayer/live/bbcnews")
+# APPI call to bbc to get response
 
-print(response)
+# print(response)
 
+print(f"The status code is {response.status_code}") # should give us status code only
+
+# should give us the status code only - numbers 200 - 404 -501
+
+if response.status_code == 200:
+    print( f"The status code is {response.status_code} welcome to bbc")
+    #print(type(response.content)) # get the content from the web-app/endpoint
+
+    new_str =response.content.decode('utf-8')
+    print(new_str)
+    import json
+    a = json.dumps(new_str)
+    print(type(a))
+    print(a)
+
+else:
+    print( f"website is down the status code is {response.status_code}")
+````
+## Second Iteration
+`````python 
+
+if response: # hidden abstraction
+    print("success")
+elif response:
+    print("unsuccessfull")
+else:
+    print("oops something went wrong, please try later")
 ````
