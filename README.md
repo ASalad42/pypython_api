@@ -21,4 +21,13 @@ scrap data from any website - store it in a file.csv or dict - iterate through t
 
 - pip install package_name `pip install requests`
 - packaged downlaoded through package install in settings 
-- 
+
+
+````python
+import requests
+
+response = requests.get("https://www.bbc.co.uk/news")
+
+print(response)
+
+````
